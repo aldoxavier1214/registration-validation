@@ -1,0 +1,114 @@
+<html>
+<head>
+     <link rel="stylesheet" href="form5.css"> 
+    <title>validation form</title>
+<script>
+     window.alert("welcome to register");
+var f1=1;
+function isEmpty()
+{
+//var len=document.getElementById("firstname").value;
+if(document.getElementById("firstname").value.length == 0)
+{
+window.alert("User name should not be blank");
+//document.getElementById("firstname").focus(); // set the focus to this input
+f1=0;
+}
+}
+function isAlphabet(){
+isEmpty();
+var alphaExp = /^[a-zA-Z]+$/;
+if(document.getElementById("firstname").value.match(alphaExp)){
+f1=1;
+}else{
+alert("First name should not contain digits");
+document.getElementById("firstname").focus();
+f1=0;
+}
+}
+function isAlphanumeric(){
+var alphaExp = /^[0-9a-zA-Z]+$/;
+if(document.getElementById("addr").value.match(alphaExp)){
+f1=1;
+}else{
+alert("Invalid Address");
+elem.focus();
+f1=1;
+}
+}
+function isNumeric()
+{
+var numericExpression = /^[0-9]+$/;
+if(document.getElementById("zip").value.match(numericExpression)){
+f1=1;
+}
+else{
+alert("Zip Code should not contain Characters");
+//document.getElementById("zip").focus();
+f1=0;
+}
+}
+function lengthRestriction()
+{
+var uInput = document.getElementById("username").value;
+if(uInput.length >= 6 && uInput.length <= 8)
+{
+f1=1;
+}
+else{
+alert("Please enter between 6 and 8 characters");
+document.getElementById("username").value="";
+document.getElementById("username").focus();
+f1=0;
+}
+}
+function madeSelection(){
+if(document.getElementById("state").value == "Please Choose")
+{
+alert("Select State");
+f1=0;
+}else{
+f1=1;
+}
+}
+function emailValidator(){
+var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+if(document.getElementById("email").value.match(emailExp)){
+return true;
+}
+else{
+alert("Invalid Email");
+return false;
+}
+}
+function Check()
+{
+if(f1==1)
+alert("Registration Success");
+if(f1==0)
+alert("Registration Failure");
+}
+</script>
+</head>
+<body>
+   
+    
+<form class="f1" >
+    <h2>REGISTER TO JOIN AND POST YOUR CREATION</h2>
+First Name: <input type="text" id="firstname" onblur="isAlphabet()"/><br />
+Address: <input type="text" id="addr" onblur="isAlphanumeric()"/><br />
+Zip Code: <input type="text" id="zip" onblur="isNumeric()"/><br />
+State: <select id="state" onblur="madeSelection()">
+<option>Please Choose</option>
+<option>TAMIL NADU</option>
+<option>KERALA</option>
+<option>KARNATAKA</option>
+<option>OTHERS</option>
+</select><br />
+Username(6-8 characters): <input type="text" id="username" onblur="lengthRestriction()"/><br
+/>
+Email: <input type="text" id="email" onblur="emailValidator()"/><br />
+<input type="submit" value="Check Form" onclick="Check()"/><br />
+</form>
+</body>
+</html>
